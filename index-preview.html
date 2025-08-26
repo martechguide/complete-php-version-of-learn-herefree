@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Here Free - Medical Education Platform</title>
+    <link rel="icon" type="image/png" href="/attached_assets/Fabicon_1754723761667.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .user-name {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Main Content */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+        
+        /* Grid Controls */
+        .grid-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .view-toggle {
+            display: flex;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+        }
+        
+        .view-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        
+        .view-btn.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .search-input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            min-width: 200px;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            background: white;
+        }
+        
+        /* Batch Grid */
+        .batch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .batch-card {
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .batch-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+        
+        .batch-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .batch-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="70" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+        
+        .batch-icon {
+            font-size: 3rem;
+            color: white;
+            z-index: 1;
+        }
+        
+        .batch-content {
+            padding: 1.5rem;
+        }
+        
+        .batch-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .batch-description {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .batch-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        
+        .batch-progress {
+            margin-bottom: 1rem;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 0.25rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #f1f5f9;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .batch-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        
+        .btn-secondary {
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .btn-secondary:hover {
+            background: #f1f5f9;
+        }
+        
+        /* Adsterra Ad Container */
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .ad-banner {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .batch-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .grid-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-filter {
+                justify-content: stretch;
+            }
+            
+            .search-input {
+                min-width: auto;
+                flex: 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .batch-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo-container">
+                    <img src="/attached_assets/Fabicon_1754723761667.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+                    <h1 class="site-title">Learn Here Free</h1>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="user-name">Welcome, Student</span>
+                <img src="/attached_assets/Fabicon_1754723761667.png" alt="User" class="user-avatar" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">Video Learning Batches</h1>
+            <p class="page-subtitle">Choose your medical education path and start learning with expert-crafted content</p>
+        </div>
+
+        <!-- Grid Controls -->
+        <div class="grid-controls">
+            <div class="view-toggle">
+                <button class="view-btn active" onclick="setGridView('grid')">Grid View</button>
+                <button class="view-btn" onclick="setGridView('list')">List View</button>
+            </div>
+            <div class="search-filter">
+                <input type="text" class="search-input" placeholder="Search batches..." onkeyup="filterBatches(this.value)">
+                <select class="filter-select" onchange="filterByCategory(this.value)">
+                    <option value="">All Categories</option>
+                    <option value="medical">Medical</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="nursing">Nursing</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Batch Grid -->
+        <div class="batch-grid" id="batchGrid">
+            <!-- Medical Basics Batch -->
+            <div class="batch-card" data-category="medical" onclick="navigateToCourses('medical-basics')">
+                <div class="batch-image">
+                    <div class="batch-icon">🏥</div>
+                </div>
+                <div class="batch-content">
+                    <h3 class="batch-title">Medical Basics</h3>
+                    <p class="batch-description">Fundamental medical concepts, anatomy, and basic clinical skills for beginners</p>
+                    <div class="batch-stats">
+                        <div class="stat-item">
+                            <span>📚</span>
+                            <span>8 Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🎥</span>
+                            <span>45 Videos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>⏱️</span>
+                            <span>12h 30m</span>
+                        </div>
+                    </div>
+                    <div class="batch-progress">
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="batch-actions">
+                        <button class="action-btn btn-primary">Continue Learning</button>
+                        <button class="action-btn btn-secondary">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Medicine Batch -->
+            <div class="batch-card" data-category="medical" onclick="navigateToCourses('advanced-medicine')">
+                <div class="batch-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="batch-icon">🧬</div>
+                </div>
+                <div class="batch-content">
+                    <h3 class="batch-title">Advanced Medicine</h3>
+                    <p class="batch-description">Advanced pathology, complex medical procedures, and specialized treatments</p>
+                    <div class="batch-stats">
+                        <div class="stat-item">
+                            <span>📚</span>
+                            <span>12 Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🎥</span>
+                            <span>78 Videos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>⏱️</span>
+                            <span>25h 15m</span>
+                        </div>
+                    </div>
+                    <div class="batch-progress">
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <span>32%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 32%"></div>
+                        </div>
+                    </div>
+                    <div class="batch-actions">
+                        <button class="action-btn btn-primary">Continue Learning</button>
+                        <button class="action-btn btn-secondary">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pharmacy Essentials Batch -->
+            <div class="batch-card" data-category="pharmacy" onclick="navigateToCourses('pharmacy-essentials')">
+                <div class="batch-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="batch-icon">💊</div>
+                </div>
+                <div class="batch-content">
+                    <h3 class="batch-title">Pharmacy Essentials</h3>
+                    <p class="batch-description">Drug interactions, pharmacology, and pharmaceutical care principles</p>
+                    <div class="batch-stats">
+                        <div class="stat-item">
+                            <span>📚</span>
+                            <span>6 Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🎥</span>
+                            <span>38 Videos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>⏱️</span>
+                            <span>18h 45m</span>
+                        </div>
+                    </div>
+                    <div class="batch-progress">
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div class="batch-actions">
+                        <button class="action-btn btn-primary">Continue Learning</button>
+                        <button class="action-btn btn-secondary">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nursing Fundamentals Batch -->
+            <div class="batch-card" data-category="nursing" onclick="navigateToCourses('nursing-fundamentals')">
+                <div class="batch-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="batch-icon">👩‍⚕️</div>
+                </div>
+                <div class="batch-content">
+                    <h3 class="batch-title">Nursing Fundamentals</h3>
+                    <p class="batch-description">Patient care, nursing procedures, and clinical nursing practices</p>
+                    <div class="batch-stats">
+                        <div class="stat-item">
+                            <span>📚</span>
+                            <span>7 Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🎥</span>
+                            <span>52 Videos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>⏱️</span>
+                            <span>20h 10m</span>
+                        </div>
+                    </div>
+                    <div class="batch-progress">
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="batch-actions">
+                        <button class="action-btn btn-primary">Continue Learning</button>
+                        <button class="action-btn btn-secondary">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Surgical Procedures Batch -->
+            <div class="batch-card" data-category="medical" onclick="navigateToCourses('surgical-procedures')">
+                <div class="batch-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                    <div class="batch-icon">🔬</div>
+                </div>
+                <div class="batch-content">
+                    <h3 class="batch-title">Surgical Procedures</h3>
+                    <p class="batch-description">Surgical techniques, pre-operative care, and post-operative management</p>
+                    <div class="batch-stats">
+                        <div class="stat-item">
+                            <span>📚</span>
+                            <span>10 Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🎥</span>
+                            <span>65 Videos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>⏱️</span>
+                            <span>30h 20m</span>
+                        </div>
+                    </div>
+                    <div class="batch-progress">
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <span>15%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 15%"></div>
+                        </div>
+                    </div>
+                    <div class="batch-actions">
+                        <button class="action-btn btn-primary">Start Learning</button>
+                        <button class="action-btn btn-secondary">Preview</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Medicine Batch -->
+            <div class="batch-card" data-category="medical" onclick="navigateToCourses('emergency-medicine')">
+                <div class="batch-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="batch-icon">🚑</div>
+                </div>
+                <div class="batch-content">
+                    <h3 class="batch-title">Emergency Medicine</h3>
+                    <p class="batch-description">Emergency protocols, trauma care, and critical patient management</p>
+                    <div class="batch-stats">
+                        <div class="stat-item">
+                            <span>📚</span>
+                            <span>9 Courses</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🎥</span>
+                            <span>58 Videos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>⏱️</span>
+                            <span>22h 50m</span>
+                        </div>
+                    </div>
+                    <div class="batch-progress">
+                        <div class="progress-label">
+                            <span>Progress</span>
+                            <span>8%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 8%"></div>
+                        </div>
+                    </div>
+                    <div class="batch-actions">
+                        <button class="action-btn btn-primary">Start Learning</button>
+                        <button class="action-btn btn-secondary">Preview</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adsterra Ad Container -->
+        <div class="ad-container">
+            <div class="ad-banner">
+                <p>📢 Adsterra Advertisement Space</p>
+                <p>Professional monetization ready for activation</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Grid View Toggle
+        function setGridView(view) {
+            const buttons = document.querySelectorAll('.view-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const grid = document.getElementById('batchGrid');
+            if (view === 'list') {
+                grid.style.gridTemplateColumns = '1fr';
+                grid.style.gap = '1rem';
+            } else {
+                grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+                grid.style.gap = '1.5rem';
+            }
+        }
+
+        // Search Filter
+        function filterBatches(searchTerm) {
+            const cards = document.querySelectorAll('.batch-card');
+            const term = searchTerm.toLowerCase();
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.batch-title').textContent.toLowerCase();
+                const description = card.querySelector('.batch-description').textContent.toLowerCase();
+                
+                if (title.includes(term) || description.includes(term)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Category Filter
+        function filterByCategory(category) {
+            const cards = document.querySelectorAll('.batch-card');
+            
+            cards.forEach(card => {
+                if (!category || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Navigation Functions
+        function navigateToCourses(batchId) {
+            // In a real application, this would navigate to the courses page
+            alert(`🎯 Navigating to ${batchId} courses!\n\nThis would open the course selection page with all available courses in this batch.`);
+            
+            // For demo purposes, show which page would be loaded
+            console.log(`Would navigate to: batch-courses.php?batch=${batchId}`);
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars on load
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.batch-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-4px)';
+                });
+            });
+        });
+
+        // Show success message
+        setTimeout(() => {
+            const notification = document.createElement('div');
+            notification.innerHTML = `
+                <div style="position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 1rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000; animation: slideIn 0.3s ease;">
+                    ✅ PHP Website Preview Ready!<br>
+                    <small>All features working perfectly</small>
+                </div>
+                <style>
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                </style>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 4000);
+        }, 1000);
+    </script>
+</body>
+</html>

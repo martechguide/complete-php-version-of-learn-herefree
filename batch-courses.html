@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Courses - Learn Here Free</title>
+    <link rel="icon" type="image/png" href="/attached_assets/Fabicon_1754723761667.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f8fafc; 
+            line-height: 1.6; 
+        }
+        
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            color: #64748b;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+        
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 2rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .breadcrumb a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: #64748b;
+            font-size: 1.125rem;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-icon {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-description {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .course-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+        
+        .subject-count {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        
+        .no-courses {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+            grid-column: 1 / -1;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content { padding: 0 1rem; }
+            .main-container { padding: 1rem; }
+            .courses-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="/attached_assets/Fabicon_1754723761667.png" alt="Logo" class="logo-img" style="width: 28px; height: 28px; border-radius: 50%;">
+                <h1 class="site-title">Learn Here Free</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="/complete-php-version/index-working.html" class="nav-link">Home</a>
+                <a href="/complete-php-version/admin-dashboard-demo.php" class="nav-link">Admin</a>
+                <a href="/" class="nav-link">React App</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="breadcrumb">
+            <a href="/complete-php-version/index-working.html">Home</a> → 
+            <span id="batch-name">Batch Courses</span>
+        </div>
+
+        <div class="page-header">
+            <h1 class="page-title" id="page-title">Batch Courses</h1>
+            <p class="page-subtitle">Choose a course to explore subjects and videos</p>
+        </div>
+
+        <div id="courses-container" class="courses-grid">
+            <!-- Courses will be loaded here -->
+        </div>
+    </main>
+
+    <script>
+        // Get batch ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const batchId = urlParams.get('batch') || urlParams.get('batchId') || 'medical-batch-2025';
+        
+        // Load courses from API
+        async function loadCourses() {
+            const containerEl = document.getElementById('courses-container');
+            
+            try {
+                // Load batch info first
+                const batchResponse = await fetch(`/api/batches/${batchId}`);
+                if (batchResponse.ok) {
+                    const batch = await batchResponse.json();
+                    document.getElementById('page-title').textContent = batch.name + ' Courses';
+                    document.getElementById('batch-name').textContent = batch.name;
+                }
+                
+                // Load courses
+                const coursesResponse = await fetch(`/api/batches/${batchId}/courses`);
+                if (!coursesResponse.ok) {
+                    throw new Error('Failed to load courses');
+                }
+                
+                const courses = await coursesResponse.json();
+                
+                if (courses.length === 0) {
+                    // No courses, redirect to subjects directly
+                    window.location.href = `/complete-php-version/batch-subjects.html?batchId=${batchId}`;
+                    return;
+                }
+                
+                // Render courses
+                courses.forEach(course => {
+                    const courseCard = document.createElement('div');
+                    courseCard.className = 'course-card';
+                    courseCard.onclick = () => {
+                        // Navigate to course subjects
+                        window.location.href = `/complete-php-version/batch-subjects.html?batchId=${batchId}&courseId=${course.id}`;
+                    };
+                    
+                    courseCard.innerHTML = `
+                        <div class="course-icon">📚</div>
+                        <div class="course-content">
+                            <h3 class="course-title">${course.name}</h3>
+                            <p class="course-description">${course.description || 'Complete course content'}</p>
+                            <div class="course-stats">
+                                <span>Order: ${course.orderIndex || 0}</span>
+                                <span class="subject-count">View Subjects</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    containerEl.appendChild(courseCard);
+                });
+                
+            } catch (error) {
+                console.error('Error loading courses:', error);
+                containerEl.innerHTML = `
+                    <div class="no-courses">
+                        <h3>Failed to load courses</h3>
+                        <p>Please try again later or <a href="/complete-php-version/batch-subjects.html?batchId=${batchId}">view subjects directly</a></p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load courses when page loads
+        document.addEventListener('DOMContentLoaded', loadCourses);
+    </script>
+</body>
+</html>

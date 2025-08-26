@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Test Direct</title>
+</head>
+<body>
+    <h1>Direct HTML Test - Working!</h1>
+    <p>यह file directly browser में load हो रही है।</p>
+    
+    <div style="margin: 20px 0;">
+        <h3>Navigation Test:</h3>
+        <a href="home-professional.php" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+            Test PHP Home Page
+        </a>
+    </div>
+    
+    <script>
+        console.log('Direct HTML file loaded successfully');
+        
+        // Test navigation to PHP file
+        function testPhpNavigation() {
+            console.log('Testing PHP navigation...');
+            window.location.href = 'home-professional.php';
+        }
+        
+        setTimeout(() => {
+            console.log('Testing PHP file access in 3 seconds...');
+            // testPhpNavigation();
+        }, 3000);
+    </script>
+</body>
+</html>

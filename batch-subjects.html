@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Subjects - Learn Here Free</title>
+    <link rel="icon" type="image/png" href="/attached_assets/Fabicon_1754723761667.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f8fafc; 
+            line-height: 1.6; 
+        }
+        
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            color: #64748b;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+        
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 2rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .breadcrumb a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .page-header {
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: #64748b;
+            font-size: 1.125rem;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .subject-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subject-icon {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .subject-content {
+            padding: 1.5rem;
+        }
+        
+        .subject-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subject-description {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .subject-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+        
+        .video-count {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f1f5f9 25%, transparent 37%, transparent 63%, #f1f5f9 75%);
+            background-size: 400% 100%;
+            animation: skeleton-loading 1.4s ease-in-out infinite;
+            border-radius: 4px;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes skeleton-loading {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .error-state {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content { padding: 0 1rem; }
+            .main-container { padding: 1rem; }
+            .subjects-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="/attached_assets/Fabicon_1754723761667.png" alt="Logo" class="logo-img" style="width: 28px; height: 28px; border-radius: 50%;">
+                <h1 class="site-title">Learn Here Free</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="/complete-php-version/index-working.html" class="nav-link">Home</a>
+                <a href="/complete-php-version/admin-dashboard-demo.php" class="nav-link">Admin</a>
+                <a href="/" class="nav-link">React App</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="breadcrumb">
+            <a href="/complete-php-version/index-working.html">Home</a> → <span>Batch Subjects</span>
+        </div>
+
+        <div class="page-header">
+            <h1 class="page-title">Medical Education Subjects</h1>
+            <p class="page-subtitle">Choose a subject to start learning</p>
+        </div>
+
+        <div id="loading" class="loading-container" style="display: none;">
+            <div class="loading-skeleton" style="height: 200px; margin-bottom: 1rem;"></div>
+            <div class="loading-skeleton" style="height: 200px; margin-bottom: 1rem;"></div>
+            <div class="loading-skeleton" style="height: 200px; margin-bottom: 1rem;"></div>
+        </div>
+
+        <div id="error" class="error-state" style="display: none;">
+            <p>Failed to load subjects. Please try again later.</p>
+        </div>
+
+        <div id="subjects-container" class="subjects-grid">
+            <!-- Subjects will be loaded here -->
+        </div>
+    </main>
+
+    <script>
+        // Get batch ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const batchId = urlParams.get('batchId') || 'medical-batch-2025';
+        
+        // Load subjects from API
+        async function loadSubjects() {
+            const loadingEl = document.getElementById('loading');
+            const errorEl = document.getElementById('error');
+            const containerEl = document.getElementById('subjects-container');
+            
+            loadingEl.style.display = 'block';
+            errorEl.style.display = 'none';
+            containerEl.innerHTML = '';
+            
+            try {
+                const response = await fetch(`/api/batches/${batchId}/subjects`);
+                if (!response.ok) {
+                    throw new Error('Failed to load subjects');
+                }
+                
+                const subjects = await response.json();
+                loadingEl.style.display = 'none';
+                
+                if (subjects.length === 0) {
+                    containerEl.innerHTML = `
+                        <div class="error-state" style="grid-column: 1 / -1;">
+                            <h3>No subjects available</h3>
+                            <p>This batch doesn't have any subjects yet.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Render subjects
+                subjects.forEach(subject => {
+                    const subjectCard = document.createElement('div');
+                    subjectCard.className = 'subject-card';
+                    subjectCard.onclick = () => {
+                        window.location.href = `/complete-php-version/subject-videos.html?subjectId=${subject.id}`;
+                    };
+                    
+                    subjectCard.innerHTML = `
+                        <div class="subject-icon">
+                            ${subject.icon || '📚'}
+                        </div>
+                        <div class="subject-content">
+                            <h3 class="subject-title">${subject.name}</h3>
+                            <p class="subject-description">${subject.description || 'Complete course content'}</p>
+                            <div class="subject-stats">
+                                <span>Order: ${subject.orderIndex || 0}</span>
+                                <span class="video-count">${subject.videoCount || 0} videos</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    containerEl.appendChild(subjectCard);
+                });
+                
+            } catch (error) {
+                console.error('Error loading subjects:', error);
+                loadingEl.style.display = 'none';
+                errorEl.style.display = 'block';
+            }
+        }
+        
+        // Load subjects when page loads
+        document.addEventListener('DOMContentLoaded', loadSubjects);
+    </script>
+</body>
+</html>
